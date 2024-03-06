@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package photosbridge;
+
+option go_package = "github.com/brotherlogic/photosbridge/proto";
+
+message Photo {
+    int64 taken_on_ms = 1;
+    string url = 2;
+}
+
+message GetAlbumRequest{
+    string name = 1;
+}
+
+message GetAlbumResponse {
+    repeated Photo photos = 1;
+}
+
+service PhotosbridgeService {
+    rpc GetAlbum (GetAlbumRequest) returns (GetAlbumResponse);
+}
